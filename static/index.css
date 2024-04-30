@@ -289,6 +289,7 @@ body{
     }
 
     .desc{
+      margin-top: -20px;
       position: relative;
       font-size: 20px;
       color: #4d4f51;
