@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://kit.fontawesome.com/48e723b064.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='get_loca.css') }}" />
+    <script defer src="{{ url_for('static', filename='get_loca.js') }}"></script>
+    <title>Document</title>
+</head>
+<body onload="update_aqi_form();">
+<h1 class="title">Air Quality in...</h1>
+<form method="POST">
+    <label>
+        <input name="city" type="text" placeholder="city" id="cityInput" />
+    </label>
+    <label>
+        <input name="state" type="text" placeholder="state" id="stateInput" />
+    </label>
+    <input type="submit" />
+</form>
+
+{% if data %}
+    <div class="container">
+        <h1>In <span id="city" title="{{ data['location'] }}">{{ data['city'] }}</span>, <span id="state">{{ data['state'] }}</span> it is...</h1>
+
+        <!-- <p>It's a nice, {{ data['current']['pollution'] }}</p> -->
+        <div class="weather">
+            <p class="obj">
+                Wind Speed - {{ data['current']['weather']['ws'] }}
+                <span class="wind-dir">
+                    <span data-direction="{{ data['current']['weather']['wd'] }}" id="wind_direction">
+                        {{ data['wind_direction'] }}
+                    </span>
+                    <i class="fa-solid fa-arrow-up linkout" id="rotate"></i>
+                </span>
+            </p>
+
+            <p class="obj">
+                Humidity - {{ data['current']['weather']['hu'] }}%
+            </p>
+
+            <p class="obj">
+                {{ ((data['current']['weather']['tp'])*(9/5)+32) }}&deg; Fahrenheit
+            </p>
+
+            <p class="obj">
+                <i class="fa-solid fa-arrow-up-right-from-square linkout"></i>
+                Air Quality Index - {{ data['current']['pollution']['aqius'] }}
+            </p>
+
+        </div>
+        <p class="timestamp">
+            {{ data['current']['weather']['ts'] }}
+        </p>
+    </div>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "url": "https://english-irp.vercel.app/",
+  "green": true,
+  "bytes": 487,
+  "cleanerThan": 1,
+  "rating": "A+",
+  "statistics": {
+    "adjustedBytes": 367.685,
+    "energy": 2.773710060864687e-7,
+    "co2": {
+      "grid": {
+        "grams": 0.00012259798469021918,
+        "litres": 0.00006818899908469989
+      },
+      "renewable": {
+        "grams": 0.00010628856953233482,
+        "litres": 0.000059117702373884616
+      }
+    }
+  },
+  "timestamp": 1713283458
+}
